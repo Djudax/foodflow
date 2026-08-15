@@ -6,4 +6,6 @@ def route_order(order, couriers, hour, is_vip, surge):
     if not couriers:
         plan["priority"] = -1
         return plan
+    if is_vip:
+        plan["priority"] += 2
     return plan
