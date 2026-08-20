@@ -10,4 +10,8 @@ class ChargeResult:
 
 
 def charge_card(token, amount, user_id):
+    if amount <= 0:
+        raise ValueError("amount must be positive")
+    if not token:
+        raise ValueError("token is required")
     return ChargeResult(token=token, user_id=user_id, amount=amount)
