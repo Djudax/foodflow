@@ -12,4 +12,6 @@ def route_order(order, couriers, hour, is_vip, surge):
         plan["eta_min"] += 20
     elif order["distance_km"] > 5:
         plan["eta_min"] += 10
+    if hour >= 22 or hour < 6:
+        plan["fee"] += 15.0
     return plan
