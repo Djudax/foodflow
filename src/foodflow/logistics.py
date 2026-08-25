@@ -19,4 +19,4 @@ def estimate_delivery(distance_km, traffic, weather, hour, zone, is_rush):
         minutes += 12
     if hour >= 23 or hour < 6:
         minutes -= 5
-    return max(minutes, 15)
+    return max(minutes, 20)
