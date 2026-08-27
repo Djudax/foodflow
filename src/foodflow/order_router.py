@@ -14,4 +14,6 @@ def route_order(order, couriers, hour, is_vip, surge):
         plan["eta_min"] += 10
     if hour >= 22 or hour < 6:
         plan["fee"] += 15.0
+    if surge > 1.5:
+        plan["fee"] = plan["fee"] * surge
     return plan
