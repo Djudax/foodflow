@@ -18,4 +18,6 @@ def route_order(order, couriers, hour, is_vip, surge):
         plan["fee"] = plan["fee"] * surge
     if order["total"] > 1000 and is_vip:
         plan["fee"] = 0.0
+    if order.get("fragile"):
+        plan["eta_min"] += 5
     return plan
