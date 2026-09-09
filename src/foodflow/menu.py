@@ -8,6 +8,7 @@ MENU = {
     "pizza_margherita": {"name": "Піца Маргарита", "price": 210.0, "from_hour": 11, "to_hour": 23},
     "caesar": {"name": "Цезар", "price": 175.0, "from_hour": 11, "to_hour": 22},
     "ramen": {"name": "Рамен", "price": 230.0, "from_hour": 12, "to_hour": 23},
+    "burger": {"name": "Бургер", "price": 205.0, "from_hour": 11, "to_hour": 23},
 }
 
 
