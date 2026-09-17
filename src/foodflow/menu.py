@@ -9,6 +9,7 @@ MENU = {
     "caesar": {"name": "Цезар", "price": 175.0, "from_hour": 11, "to_hour": 22},
     "ramen": {"name": "Рамен", "price": 230.0, "from_hour": 12, "to_hour": 23},
     "burger": {"name": "Бургер", "price": 205.0, "from_hour": 11, "to_hour": 23},
+    "cheesecake": {"name": "Чізкейк", "price": 120.0, "from_hour": 10, "to_hour": 23},
 }
 
 
