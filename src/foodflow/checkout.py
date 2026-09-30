@@ -10,4 +10,4 @@ def checkout(user_id, token, dish, discount_pct, delivery_fee, tax_rate, currenc
     total = total * (1 + tax_rate)
     if currency != "UAH":
         total = total * fx_rate
-    return charge_card(token, total, user_id)
+    return charge_card(token, round(total, 2), user_id)
