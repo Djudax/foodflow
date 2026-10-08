@@ -7,6 +7,7 @@ class ChargeResult:
     token: str
     user_id: str
     amount: float
+    status: str = "OK"
 
 
 def charge_card(token, amount, user_id):
