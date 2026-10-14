@@ -4,6 +4,7 @@ from .payment_gateway import charge_card
 
 def checkout(user_id: str, token: str, dish: dict, discount_pct: float,
              delivery_fee: float, tax_rate: float, currency: str, fx_rate: float):
+    """Рахує суму замовлення та виконує списання через платіжний шлюз."""
     if discount_pct > 0:
         dish["price"] = dish["price"] * (1 - discount_pct / 100)
     total = dish["price"] * dish["qty"]
