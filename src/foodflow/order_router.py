@@ -8,7 +8,7 @@ def route_order(order, couriers, hour, is_vip, surge):
         return plan
     if is_vip:
         plan["priority"] += 2
-    if order["distance_km"] > 10:
+    if order["distance_km"] > 12:
         plan["eta_min"] += 20
     elif order["distance_km"] > 5:
         plan["eta_min"] += 10
