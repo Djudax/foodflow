@@ -12,6 +12,7 @@ MENU = {
     "cheesecake": {"name": "Чізкейк", "price": 120.0, "from_hour": 10, "to_hour": 23},
     "lemonade": {"name": "Лимонад", "price": 70.0, "from_hour": 10, "to_hour": 23},
     "espresso": {"name": "Еспресо", "price": 55.0, "from_hour": 8, "to_hour": 22},
+    "tiramisu": {"name": "Тірамісу", "price": 140.0, "from_hour": 11, "to_hour": 23},
 }
 
 
