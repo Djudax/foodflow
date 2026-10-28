@@ -21,7 +21,7 @@ def route_order(order, couriers, hour, is_vip, surge):
     if order.get("fragile"):
         plan["eta_min"] += 5
     for courier in couriers:
-        if courier["free"] and courier["rating"] >= 4.5:
+        if courier["free"] and courier["rating"] >= 4.7:
             plan["courier"] = courier["id"]
             break
     return plan
