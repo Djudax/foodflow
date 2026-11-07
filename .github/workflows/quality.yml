@@ -1,0 +1,49 @@
+name: quality-metrics
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    container: python:3.12-slim        # хмарний раннер у Docker-контейнері
+    env:
+      PYTHONPATH: src
+      CHURN_SINCE: "2026-08-11"         # межа вікна 90 днів станом на 09.11.2026 (живий режим: "90 days ago")
+    steps:
+      - name: Install git (потрібен для checkout з повною історією)
+        run: apt-get update && apt-get install -y --no-install-recommends git
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0                # повна Git-історія для Churn Rate
+
+      - name: Allow git inside container
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Install CLI static analyzer (radon)
+        run: pip install --no-cache-dir radon
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Complexity report (JSON)
+        run: |
+          mkdir -p reports
+          radon cc -s -j src > reports/complexity.json
+
+      - name: Churn Rate (90 days)
+        run: |
+          git log --since="$CHURN_SINCE" --format=format: --name-only \
+            | grep -E -v '^$' | sort | uniq -c | sort -nr > reports/churn.txt
+          cat reports/churn.txt
+
+      - name: Hotspot matrix
+        run: python tools/hotspots.py --complexity reports/complexity.json --since "$CHURN_SINCE" --out-dir reports
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-reports
+          path: reports/
